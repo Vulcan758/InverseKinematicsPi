@@ -11,6 +11,8 @@ This code requires:
 ## Usage
 Make sure you're Raspberry Pi or whatever SBC you may use is properly connected to the PCA9685 and make sure that there is I2C communication. When connecting the servos to the servo driver make sure the base servo is connected to index 0, the shoulder servo to index 1, the elbow to index 2 and the wrist to index 3 on the servo driver. 
 
+Make sure that you change the link lengths a_1, a_2, a_3 and a_4 according to the link lengths of your robotic arm (in cm). The default lengths are the lengths I used.
+
 Attach proper batteries to each device and run the following:
 
 <code> sudo python3 main.py </code>
