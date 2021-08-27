@@ -20,3 +20,5 @@ We know what R0_4 is and now we need to find the first 3 rotation matrices. If y
 How do we find each theta? We do this by taking a geometric approach to the whole arm up to the third servo. We do not use the 4th servo as that is only concerned with the orientation of the end effector. Using some simple trigonometry as shown in the code, we are able to find theta 1, 2 and 3.
 
 Now that we've found it, we can find out what R3_4 has to be and from there we can find theta 4 for the fourth servo. 
+
+After all these angles are found, the angle values are sent to the servos via Adafruit_ServoKit through the PCA9685 and then to the servos. Allowing your arm to be at the position you please. Now manually entering coordinates at which your arm should go to is not ideal and efficient. We can't exactly tell where exactly in space we want to go, we cant do that efficiently at least. To combat this, we use cameras where we can use image mapping to translate pixel values to real world coordinates. This is something I have done in another repository you can check out [here](https://github.com/Vulcan758/Rover)!
