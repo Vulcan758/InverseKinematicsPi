@@ -1,11 +1,27 @@
 # InverseKinematicsPi
-This is an inverse kinematic model and code for my 4 dof robotic arm. It it controlled by a PCA9685 which in turn is controlled by a Raspberry Pi. The code is written purely in Python. Massive thanks to [Angela Sodemann](https://www.youtube.com/user/asodemann3) for her amazing videos behind the mathematics involved in inverse kinematics. Without them I probably never would've been able to get to this far. 
+This is an inverse kinematic model and code for my 4 dof robotic arm. It it controlled by a PCA9685 (servo driver) which in turn is controlled by a Raspberry Pi. The code is written purely in Python. Massive thanks to [Angela Sodemann](https://www.youtube.com/user/asodemann3) for her amazing videos behind the mathematics involved in inverse kinematics. Without them I probably never would've been able to get to this far. 
 
 So at a high level, the way this works is pretty simple, it takes x, y, z and configuration input from the user and it later sends this input through a bunch of code that carries out a series of mathematical operations that returns the angle at which each servo should rotate to. The angle at which the 4th servo would rotate to depends on the configuration set by the user. 
 
+## Dependencies
+This code requires:
+- Numpy (I'm not exaclty certain which version but I'm sure all will work)
+- adafruit_servokit (Installation guide [here](https://learn.adafruit.com/16-channel-pwm-servo-driver?view=all#using-the-adafruit-library))
+
+## Usage
+Make sure you're Raspberry Pi or whatever SBC you may use is properly connected to the PCA9685 and make sure that there is I2C communication. When connecting the servos to the servo driver make sure the base servo is connected to index 0, the shoulder servo to index 1, the elbow to index 2 and the wrist to index 3 on the servo driver. 
+
+Attach proper batteries to each device and run the following:
+
+<code> sudo python3 main.py </code>
+
+You'll be prompted to enter in the x, y, z and configuration values. Once entered, watch your beauty as it moves to where you want it to.
+
 At the moment there are 3 fixed configurations: up, down and zero. Up makes the end effector look up at a complete 90 degrees, down makes the end effector look down at a negative 90 degrees and zero makes the end effector aligned with the servo at 0 degrees. 
 
-Now for the more technical details of the robot. Every robotic arm has a position and an orientation factor. From my understanding, the first 3 actuators in a robotic arm are usually concerned with the positioning of the end effector while the actuators after that are concerned with what the orientation of the end effector is. 
+## Technical details of the code
+
+Now for the more nitty and gritty details of the robot. Every robotic arm has a position and an orientation factor. From my understanding, the first 3 actuators in a robotic arm are usually concerned with the positioning of the end effector while the actuators after that are concerned with what the orientation of the end effector is. 
 
 You can think of the orientation of the end effector as which way the ending link of the arm would look (e.g. left, right, up, down, straight, a little up, a little down, etc) and the positioning of the end effector can be thought of as where exactly the link would be placed. 
 
