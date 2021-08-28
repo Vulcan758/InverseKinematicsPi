@@ -21,7 +21,7 @@ You'll be prompted to enter in the x, y, z and configuration values. Once entere
 
 At the moment there are 3 fixed configurations: up, down and zero. Up makes the end effector look up at a complete 90 degrees, down makes the end effector look down at a negative 90 degrees and zero makes the end effector aligned with the servo at 0 degrees. 
 
-## Technical details of the code
+## Technical details of the Arm and its mathematics.
 
 Now for the more nitty and gritty details of the robot. Every robotic arm has a position and an orientation factor. From my understanding, the first 3 actuators in a robotic arm are usually concerned with the positioning of the end effector while the actuators after that are concerned with what the orientation of the end effector is. 
 
